@@ -1,42 +1,37 @@
-import requests
-from BeautifulSoup import BeautifulSoup
-
-# get the html code frmo the given url
-# for this implementation make the url the link toa  given album
-url = 'https://genius.com/albums/Migos/Culture-ii'
-response = requests.get(url)
-html = response.content
-
-# make use of the BeautifulSoup library for scraping through html
-soup = BeautifulSoup(html)
+from artist import *
+from album import *
 
 
-# this list will hold the links to all songs in the given album
-songLinks = []
+# Purpose - get the user input for artist search or album search.
+def getInput():
+	# prompt user to know is searching by artist or album
+	return input("Artist(0) or album(1)? Please enter the corresponding number.")
 
-# from inspection of html I know links to songs are in div with class
-# 'chart_row-content', so find these div classes and extract the links in them
-data = soup.findAll('div', attrs={'class':'chart_row-content'})
-for div in data:
-	# get the link in the div class
-	links = div.findAll('a')
-	for a in links:
-		# save the link into a data structure
-		songLinks.append(a['href'])
+# determine what action the user wants to take
+val = -1
+while( val == -1):
+	try:
+		val = int(getInput())
+		if( val == 0 or val == 1):
+			print "thank you"
+		else:
+			val = -1
+	except ValueError:
+		print "That's not an integer."
+	except NameError:
+		print "That's not an integer."
 
-keyword = "Patek"
-# now with all links to songs in the given album use BeautifulSoup 
-# to search for keyword in each link. 
-for link in songLinks:
-	responseF = requests.get(link)
-	htmlF = responseF.content
-	#soupF = BeautifulSoup(htmlF)
-	#lyrics = soupF.getText()	
 
-	#if keyword in lyrics:
-	#	print link 
+# output list will be used in either case, declare it outside the scope of if statements
+output = []
 
-	# this approach is confirmed to work but is slow
-	if keyword in htmlF:
-		print link
-print "end of script"
+# in the case the user entered a 1, use the album obj helper to compute output
+if val == 1:
+	albumHelper = AlbumHelper()
+	output = albumHelper.getSongs()
+else:
+	artistHelper = ArtistHelper()
+	output = artistHelper.getSongs()
+
+for link in output:
+	print link
