@@ -5,16 +5,14 @@ from BeautifulSoup import BeautifulSoup
 class AlbumHelper:
 
 	def __init__(self):
-		print "object created successfully" 
+		print "Created AlbumHelper object." 
 
-	def getSongs(self):
-		
-		print "object is getting to work!"
+	def getSongs(self, url, word):
 		output = []
 
 		# get the html code from the given url
 		# for this implementation make the url the link to a given album
-		url = 'https://genius.com/albums/Migos/Culture-ii'
+		#url = 'https://genius.com/albums/Migos/Culture-ii'
 		response = requests.get(url)
 		html = response.content
 
@@ -35,7 +33,7 @@ class AlbumHelper:
                 		# save the link into a data structure
                 		songLinks.append(a['href'])
 
-		keyword = "Patek"
+		#keyword = "Patek"
 		# now with all links to songs in the given album use BeautifulSoup
 		# to search for keyword in each link.
 		for link in songLinks:
@@ -43,6 +41,6 @@ class AlbumHelper:
 		        htmlF = responseF.content
 
 		        # this approach is confirmed to work but is slow
-		        if keyword in htmlF:
+		        if word in htmlF:
 		                output.append(link)
 		return output
