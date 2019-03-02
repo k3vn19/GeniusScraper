@@ -43,3 +43,6 @@ The biggest limitation in this project is that it only works if the correct urls
 
 ### Runtime
 This was developed and tested using a Raspberry Pi 3 and on average runtime on the device was about 1.5 seconds per song in both types of searches. The limitation is runtime is that it is dependent on runtime of the libraries used, mainly BeautifulSoup which handles the web scraping. This poor runtime could also be attributed to the hardware limitations of the RPi so it is possible that runtimes are faster on other Unix/Linux devices.
+
+## Other
+If you're interested in reading up on how GeniusScraper was developed feel free to read about it in the [wiki](https://github.com/k3vn19/GeniusScraper/wiki). 
