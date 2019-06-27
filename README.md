@@ -3,7 +3,10 @@ GeniusScraper is a web scraper to determine if an artist has used a word in any 
 
 ## Usage
 ### Getting Started
-Download the files Scraper.py, artist.py and album.py and using the terminal navigate to the directory they are downloaded to. 
+Download the files Scraper.py, artist.py and album.py and using the terminal navigate to the directory they are downloaded to.
+
+### Requirements
+GeniusScraper was intended to be used with Python 2.7 as it was developed with the BeautifulSoup library. As of now Python 3 is not supported. The Python 2.7 interpreter can be found [here](https://www.python.org/downloads/release/python-2715/). Furthermore, library depedencies and their versions can be found in requirements.txt.
 
 ### Running Scraper.py
 Run the following command in the terminal.
